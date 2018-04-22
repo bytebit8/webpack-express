@@ -118,8 +118,8 @@ YourProject
 
 > 2018/04/10
 > version:v0.5
-1)  将 `static` 目录从 `assets`目录移动到 `dist`目录中，减少webpack的编译时间。
-2)  使用 `supervisor` 监控并重启 `express` 服务。
+> 1)  将 `static` 目录从 `assets`目录移动到 `dist`目录中，减少webpack的编译时间。
+> 2)  使用 `supervisor` 监控并重启 `express` 服务。
 
 > 2018/04/01
 > version:v0.4

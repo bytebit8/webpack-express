@@ -1,0 +1,7 @@
+/node_modules
+/dist/*
+!/dist/static/
+!/dist/root/
+!/dist/favicon.ico
+/package-lock.json
+/logs

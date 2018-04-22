@@ -1,0 +1,39 @@
+a, a:hover {
+    text-decoration: none;
+}
+
+h1, h2 {
+    text-align: center;
+    line-height: 60px;
+    padding-top: 140px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: "Microsoft YaHei"
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 50px;
+    padding-top: 40px;
+}
+
+a {
+    display: block;
+    width: 100px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    font-size: 15px;
+    color: #333;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 1px solid #000;
+    font-family: "Microsoft YaHei";
+    transition: all .4s;
+}
+
+a:hover {
+    background: #333;
+    color: #fff;
+    transition: all .4s;
+}

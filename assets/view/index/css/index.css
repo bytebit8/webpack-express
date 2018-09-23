@@ -37,3 +37,35 @@ a:hover {
     color: #fff;
     transition: all .4s;
 }
+
+.box{
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.box a{
+    position: absolute;
+    height: 30px;
+    background: #000;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    color:#fff;
+}
+
+.box .icon-1{
+    left: 100px;
+    top: 50px;
+}
+.box .icon-2{
+    left: 250px;
+    top: 100px;
+} 
+.img{
+    background:url(../../../public/img/it.jpg) no-repeat center top;
+    width: 228px;
+    height: 200px;
+    margin:20px auto;
+
+} 

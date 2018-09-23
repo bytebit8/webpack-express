@@ -1,6 +1,6 @@
 {
     "name": "webpack-express",
-    "version": "1.0.2",
+    "version": "1.0.5",
     "description": "这是一个基于webpack和Express架构的简易前后端项目模版",
     "dependencies": {
         "body-parser": "^1.18.2",
@@ -34,15 +34,21 @@
         "webpack": "^3.11.0",
         "webpack-dev-middleware": "^2.0.6",
         "webpack-hot-middleware": "^2.21.2",
-        "webpack-merge": "^4.1.2"
+        "webpack-merge": "^4.1.2",
+        "friendly-errors-webpack-plugin": "^1.7.0"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "app": "cross-env DEV_MODE=\"build\" node ./build/app",
         "dev": "cross-env DEV_MODE=\"dev\" nodemon build/app.js  -w server -w views -w config -w build/app.js",
+        "local": "cross-env DEV_MODE=\"local\" webpack --config build/webpack.local.config.js  ",
         "rel": "cross-env DEV_MODE=\"build\" webpack --config build/webpack.build.config.js --progress"
     },
-    "keywords": ["webpack-express","webpack-dev-middleware","webpack-hot-middleware"],
+    "keywords": [
+        "webpack-express",
+        "webpack-dev-middleware",
+        "webpack-hot-middleware"
+    ],
     "author": "gtshen",
     "license": "ISC"
 }

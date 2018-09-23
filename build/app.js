@@ -12,14 +12,19 @@ const log4jsConfig = require('../config/log4j.config');
 
 const app = express();
 
+//设置模版变量
+Object.keys(expressConfig.locals).forEach(function(idx) {
+    app.locals[idx] = expressConfig.locals[idx];
+});
+
 //开发配置
 if (process.env.DEV_MODE === "dev") {
 
     const webpack = require('webpack');
     const webpackDevMiddleWare = require('webpack-dev-middleware');
     const webpackHotMiddleWare = require('webpack-hot-middleware');
-    const webpackConfig = require('./webpack.dev.config');
-    const complier = webpack(webpackConfig);
+    const webpackDevConfig = require('./webpack.dev.config');
+    const complier = webpack(webpackDevConfig);
 
     app.use('/' + expressConfig.productName, webpackDevMiddleWare(complier, {
         stats: {
@@ -27,32 +32,24 @@ if (process.env.DEV_MODE === "dev") {
             children: false,
             modules: false,
             colors: true
-        },
-        index: false
+        }
     }));
 
     app.use(webpackHotMiddleWare(complier));
 
 }
-
-
-//设置模版变量
-Object.keys(expressConfig.locals).forEach(function(idx) {
-    app.locals[idx] = expressConfig.locals[idx];
-});
-
 //设置模板引擎
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 
 //设置模板目录
-app.set('views', path.resolve('./dist/views'));
+app.set('views', path.resolve(__dirname, '../dist/views'));
 
 //设置静态资源目录
-app.use('/' + expressConfig.productName, express.static(path.resolve('dist')));
+app.use('/' + expressConfig.productName, express.static(path.resolve(__dirname, '../dist')));
 
 //设置favicon
-app.use(favicon(path.resolve('dist/favicon.ico')))
+app.use(favicon(path.resolve(__dirname, '../dist/favicon.ico')));
 
 //设置日志
 // app.use(logs.useLogger(log4jsConfig));

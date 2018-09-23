@@ -1,33 +1,40 @@
-const path = require('path');
-const base = require('./webpack.base.config');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const WebPackConfig = require('../config/webpack.config');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
+var webpack = require('webpack');
+var merge = require('webpack-merge');
+var base = require('./webpack.base.config');
+var WebPackConfig = require('../config/webpack.config');
+var ExtractTextWebpack = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = merge(base, {
     output: {
         path: path.resolve('dist'),
-        filename: 'js/[name].js'
+        filename: 'js/[name].min.js',
+        publicPath: ''
     },
     module: {
         rules: [{
             test: /\.css$/,
             include: [path.resolve('assets')],
-            loader: "style-loader!css-loader"
+            use: ExtractTextWebpack.extract({
+                use: 'css-loader!postcss-loader',
+                publicPath: '../'
+            })
         }, {
             test: /\.scss$/,
             include: [path.resolve('assets')],
-            loader: "style-loader!css-loader!sass-loader"
+            use: ExtractTextWebpack.extract({
+                use: 'css-loader!postcss-loader!sass-loader',
+                publicPath: '../'
+            })
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
+        new ExtractTextWebpack("css/[name].css"),
         ...WebPackConfig.getDirectory().map(file => {
             return new HtmlWebpackPlugin({
-                filename: file + ".html",
+                filename: path.resolve('dist/views/', file + ".html"),
                 inject: true,
                 template: path.resolve('assets/view/' + file + '/index.html'),
                 chunks: ['vendors', file],
@@ -39,6 +46,8 @@ module.exports = merge(base, {
                 messages: [`Your application is running here: http://${WebPackConfig.dev.host}:${WebPackConfig.dev.port}/${WebPackConfig.dev.productName}/`]
             }
         })
+       
+
     ],
     stats: {
         assets: true,

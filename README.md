@@ -159,6 +159,7 @@ YourProject
 
 ## 下个计划
 
-> version:v1.1
+> version:v2.0
 > 1) 加入reaact框架。
-> 2) 集成脚手架生成，并且定制是否需要react
+> 2) 加入vue框架。
+> 2) 集成脚手架生成，并且定制是否需要react与vue

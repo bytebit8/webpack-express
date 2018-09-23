@@ -1,10 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var merge = require('webpack-merge');
-var base = require('./webpack.base.config');
-var WebPackConfig = require('../config/webpack.config');
-var ExtractTextWebpack = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const merge = require('webpack-merge');
+const base = require('./webpack.base.config');
+const WebPackConfig = require('../config/webpack.config');
+const ExtractTextWebpack = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = merge(base, {
